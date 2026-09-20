@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+xlerobot-deck.html
+sensor-shopping.html

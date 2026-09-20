@@ -1,0 +1,163 @@
+{
+  "checked": "2026-09-20",
+  "currency": "USD",
+  "market": "Amazon.com; Brooklyn 11222 displayed",
+  "price_basis": "One retail pack per link; before tax/shipping, without coupons. Parts and chemistry kits checked on Amazon. Prices and availability can change.",
+  "exclusions": "Robot, printer, filament, tools, protective equipment, printed holders and local setup supplies. Extra boards/sensors in packs are spares; they are not fitted to every pod.",
+  "items": {
+    "esp32": {
+      "name": "ESP32 USB-C · 3 boards",
+      "asin": "B0D8T53CQ5",
+      "price": 19.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B0D8T53CQ5"
+    },
+    "usb": {
+      "name": "USB data cable · 1",
+      "asin": "B08NXJKNNL",
+      "price": 5.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B08NXJKNNL"
+    },
+    "wires": {
+      "name": "Breadboards + jumper wires",
+      "asin": "B09VKYLYN7",
+      "price": 9.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B09VKYLYN7"
+    },
+    "bolts": {
+      "name": "M2–M5 bolts / nuts / washers",
+      "asin": "B0DBLCHK48",
+      "price": 9.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B0DBLCHK48"
+    },
+    "weights": {
+      "name": "10–200 g weight set",
+      "asin": "B01FTL98DO",
+      "price": 10.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B01FTL98DO"
+    },
+    "scale": {
+      "name": "1 kg load cell + HX711 · 2 sets",
+      "asin": "B09K7G51KJ",
+      "price": 9.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B09K7G51KJ"
+    },
+    "temp": {
+      "name": "DS18B20 probes + adapters · 2",
+      "asin": "B0FLDQJ71M",
+      "price": 8.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B0FLDQJ71M"
+    },
+    "humidity": {
+      "name": "SHT31 air temp / humidity · 2",
+      "asin": "B0F9WVY98D",
+      "price": 9.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B0F9WVY98D"
+    },
+    "lux": {
+      "name": "BH1750 light sensor · 3",
+      "asin": "B00M0F29OS",
+      "price": 7.49,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B00M0F29OS"
+    },
+    "leak": {
+      "name": "Leak pads · 5",
+      "asin": "B0BXKMLB4D",
+      "price": 5.99,
+      "group": "basic",
+      "url": "https://www.amazon.com/dp/B0BXKMLB4D"
+    },
+    "ph": {
+      "name": "DFRobot pH V2 kit",
+      "asin": "B07L2RSHYN",
+      "price": 45.5,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B07L2RSHYN"
+    },
+    "ec": {
+      "name": "DFRobot EC K=1 kit",
+      "asin": "B07L2SRRYL",
+      "price": 74.9,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B07L2SRRYL"
+    },
+    "kcl": {
+      "name": "3M KCl storage · 8 oz",
+      "asin": "B07NXTBD8D",
+      "price": 17.0,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B07NXTBD8D"
+    },
+    "adc": {
+      "name": "ADS1115 ADC · 3",
+      "asin": "B0CNV9G4K1",
+      "price": 11.99,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B0CNV9G4K1"
+    },
+    "resistors": {
+      "name": "10 kΩ resistors · 100",
+      "asin": "B0B4JFPHTW",
+      "price": 4.97,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B0B4JFPHTW"
+    },
+    "rinse": {
+      "name": "Deionized rinse water",
+      "asin": "B0881Y1PS4",
+      "price": 17.99,
+      "group": "chemistry",
+      "url": "https://www.amazon.com/dp/B0881Y1PS4"
+    },
+    "co2": {
+      "name": "SCD41 CO₂ sensor",
+      "asin": "B0C622SS34",
+      "price": 26.99,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B0C622SS34"
+    },
+    "spectrum": {
+      "name": "AS7341 spectral sensor",
+      "asin": "B08ZS7JKDD",
+      "price": 28.99,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B08ZS7JKDD"
+    },
+    "airflow": {
+      "name": "BT-816B handheld airflow meter",
+      "asin": "B0CYZT5B8S",
+      "price": 12.99,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B0CYZT5B8S"
+    },
+    "battery": {
+      "name": "CR2032 · 2 batteries",
+      "asin": "B07G7KRQQ5",
+      "price": 3.29,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B07G7KRQQ5"
+    },
+    "oxygen": {
+      "name": "DFRobot dissolved-O₂ kit",
+      "asin": "B08JGRT7RM",
+      "price": 169.0,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B08JGRT7RM"
+    },
+    "electrolyte": {
+      "name": "0.5M NaOH fill solution · 500 mL",
+      "asin": "B0754PL7VN",
+      "price": 20.29,
+      "group": "optional",
+      "url": "https://www.amazon.com/dp/B0754PL7VN"
+    }
+  }
+}

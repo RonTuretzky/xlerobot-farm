@@ -1,0 +1,63 @@
+<style>
+  svg.fig { width: 100%; height: auto; max-height: 56vh; display: block; }
+  .figslide .body { justify-content: flex-start; }
+  .figslide h2 { font-size: clamp(26px, 3.1vw, 46px); }
+  .figslide .caption { margin-top: 6px; }
+  .fig .ln { fill: none; stroke: #72e2b0; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .fig .ln2 { fill: none; stroke: rgba(226,239,221,.35); stroke-width: 1.2; }
+  .fig .lime { fill: none; stroke: #c9f65b; stroke-width: 1.8; }
+  .fig .fl { fill: rgba(201,246,91,.13); stroke: #c9f65b; stroke-width: 1.2; }
+  .fig .fa { fill: rgba(94,214,222,.14); stroke: #5ed6de; stroke-width: 1.2; }
+  .fig .fw { fill: rgba(94,214,222,.22); stroke: none; }
+  .fig .fg { fill: rgba(255,255,255,.05); stroke: rgba(226,239,221,.28); stroke-width: 1.2; }
+  .fig .fd { fill: #0d1a16; stroke: rgba(226,239,221,.3); stroke-width: 1.2; }
+  .fig .lb { font: 500 11px ui-monospace, Menlo, monospace; fill: #aebbb3; }
+  .fig .lbs { font: 500 9.5px ui-monospace, Menlo, monospace; fill: #8fa097; }
+  .fig .lbi { font: 700 11px ui-monospace, Menlo, monospace; fill: #f4f6ed; }
+  .fig .lbl { font: 700 12px ui-monospace, Menlo, monospace; fill: #c9f65b; letter-spacing: .06em; }
+  .fig .lba { font: 700 12px ui-monospace, Menlo, monospace; fill: #5ed6de; letter-spacing: .06em; }
+  .fig .sprout { fill: none; stroke: #72e2b0; stroke-width: 1.4; stroke-linecap: round; }
+  .fig .tag { fill: #f4f6ed; }
+  .fig .barA { fill: #78a622; }
+  .fig .barB { fill: #2a98a2; }
+  .fig .barN { fill: rgba(255,255,255,.16); }
+  .fig .barC { fill: #c0563f; }
+  .fig .lbc { font: 700 12px ui-monospace, Menlo, monospace; fill: #ff8a70; letter-spacing: .06em; }
+  .fig .fc { fill: rgba(255,138,112,.14); stroke: #ff8a70; stroke-width: 1.2; }
+  .fig .water { fill: rgba(94,214,222,.09); stroke: none; }
+  .fig .wave { fill: none; stroke: #5ed6de; stroke-width: 1.4; opacity: .8; }
+  .opt-card.c { border-color: rgba(255,138,112,.3); } .opt-card.c .price { color: var(--coral); }
+  .grid-3 .opt-card p { font-size: clamp(12px, 1.05vw, 15px); }
+  .fig .grid { stroke: rgba(226,239,221,.08); stroke-width: 1; }
+  .fig .axis { font: 500 10px ui-monospace, Menlo, monospace; fill: #77877e; }
+  .fig .val { font: 700 11px ui-monospace, Menlo, monospace; fill: #f4f6ed; }
+  .fig .chip { fill: rgba(255,255,255,.04); stroke: rgba(226,239,221,.16); }
+  .fig .bar:hover { filter: brightness(1.25); }
+  .legend { display: flex; gap: 18px; margin-top: 10px; font: 500 11px ui-monospace, Menlo, monospace; color: #aebbb3; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+  .opt-card { border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); }
+  .opt-card.a { border-color: rgba(201,246,91,.3); }
+  .opt-card.b { border-color: rgba(94,214,222,.3); }
+  .opt-card h3 { margin-bottom: 8px; }
+  .opt-card .price { font: 800 30px/1 Inter, system-ui, sans-serif; letter-spacing: -.03em; margin: 8px 0 6px; }
+  .opt-card.a .price { color: var(--lime); } .opt-card.b .price { color: var(--aqua); }
+  .caption { font-size: 12px; color: #8fa097; margin-top: 10px; }
+  .gallery { display: grid; gap: 10px; }
+  .gallery figure { margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: rgba(255,255,255,.03); }
+  .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #fff; }
+  .gallery img.pix { image-rendering: pixelated; object-fit: contain; padding: 8%; box-sizing: border-box; }
+  .gallery figcaption { font: 500 11px/1.3 ui-monospace, Menlo, monospace; color: #c7d1c9; padding: 6px 8px; }
+  .gallery figcaption b { color: var(--lime); font-weight: 700; }
+  .thumbs { display: flex; gap: 4px; align-items: center; }
+  .thumbs img { width: 44px; height: 34px; object-fit: cover; border-radius: 5px; background: #fff; }
+  .thumbs img.pix { image-rendering: pixelated; object-fit: contain; }
+  .credit { font-size: 10px; color: #77877e; margin-top: 8px; }
+  .proj { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .proj .card { padding: 0; overflow: hidden; }
+  .proj img { width: 100%; aspect-ratio: 16/6; object-fit: cover; display: block; background: #fff; }
+  .proj .pbody { padding: 9px 12px 10px; }
+  .proj h3 { font-size: 13.5px; }
+  .proj p { font-size: 11px; margin-top: 4px; line-height: 1.35; }
+  .proj .tag { margin-top: 5px; font-size: 9.5px; }
+  .proj .card { box-shadow: none; }
+</style>

@@ -1,0 +1,78 @@
+<style>
+  #cm-panel { position: fixed; z-index: 30; left: 50%; bottom: 12px; transform: translateX(-50%); width: auto; max-width: 46vw; background: rgba(7,16,13,.94); border: 1px solid var(--line); border-radius: 14px; padding: 7px 10px 8px; box-shadow: 0 10px 40px rgba(0,0,0,.45); backdrop-filter: blur(6px); }
+  #cm-panel.has { border-color: rgba(201,246,91,.45); }
+  #cm-head { display: flex; align-items: center; gap: 10px; font: 600 10px/1 ui-monospace, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: #8fa097; margin-bottom: 5px; }
+  #cm-head .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.18); }
+  #cm-panel.has #cm-head .dot { background: var(--lime); }
+  #cm-head .sp { flex: 1; }
+  #cm-head button, .cm-btn { font: 600 10px/1 ui-monospace, Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
+  #cm-head button:hover, .cm-btn:hover { background: var(--lime); color: var(--night); }
+  #cm-text { width: 100%; height: 32px; resize: none; display: block; color: var(--ink); background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 9px; padding: 7px 10px; font: 14px/1.4 Inter, ui-sans-serif, system-ui, sans-serif; transition: height .18s ease; outline: none; }
+  #cm-text { display: none !important; }
+  #cm-panel.open { width: min(640px, 46vw); }
+  #cm-panel.open #cm-text { display: block !important; height: 130px; border-color: rgba(201,246,91,.5); }
+  #cm-head { cursor: pointer; margin-bottom: 0 !important; }
+  #cm-panel.open #cm-head { margin-bottom: 5px !important; }
+  #cm-preview { color: #dce5dc; text-transform: none; letter-spacing: 0; font-weight: 500; max-width: 26vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #cm-panel.open #cm-preview { display: none; }
+  #cm-text::placeholder { color: #66756d; }
+  .cm-big { font-size: 14px !important; padding: 12px 20px !important; background: var(--lime) !important; color: var(--night) !important; border-color: var(--lime) !important; }
+  #cm-summary { display: grid; gap: 8px; max-height: 52vh; overflow: auto; margin-top: 16px; }
+  .cm-item { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: rgba(255,255,255,.03); cursor: pointer; }
+  .cm-item:hover { border-color: rgba(201,246,91,.4); }
+  .cm-item b { display: block; font: 700 11px/1.3 ui-monospace, Menlo, monospace; color: var(--mint); margin-bottom: 4px; }
+  .cm-item span { white-space: pre-wrap; color: #dce5dc; font-size: 14px; line-height: 1.45; }
+  .cm-empty { color: var(--muted); font-size: 15px; }
+  @media print { #cm-panel { display: none; } }
+  @media (max-width: 850px) { #cm-panel { width: calc(100vw - 150px); left: 12px; transform: none; } }
+</style>
+<div id="cm-panel">
+  <div id="cm-head"><span class="dot"></span><span id="cm-label">Comment</span><span id="cm-preview"></span><span class="sp"></span><span id="cm-count"></span><button id="cm-copy" type="button">Copy all</button></div>
+  <textarea id="cm-text" placeholder="Comment on this slide… (saved automatically · Esc to close)"></textarea>
+</div>
+<script>
+(() => {
+  const KEY = 'xlerobot-deck-comments-v1';
+  const slides = [...document.querySelectorAll('.slide')];
+  const panel = document.getElementById('cm-panel'), ta = document.getElementById('cm-text');
+  const label = document.getElementById('cm-label'), count = document.getElementById('cm-count'), preview = document.getElementById('cm-preview');
+  const setPreview = () => { const v = clean(ta.value); preview.textContent = v ? '“' + v.slice(0, 60) + (v.length > 60 ? '…' : '') + '”' : '+ add'; };
+  let data = {}; try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  const clean = s => (s || '').replace(/\s+/g, ' ').trim();
+  const titleOf = i => { const s = slides[i]; const k = clean(s.querySelector('.kicker')?.textContent); const h = clean(s.querySelector('h1, h2, .focus-quote')?.textContent); return (k + (h ? ' — ' + h : '')).slice(0, 160); };
+  const cur = () => Math.max(0, Math.min(slides.length - 1, (Number(location.hash.slice(1)) || 1) - 1));
+  const pad = n => String(n).padStart(2, '0');
+  const keys = () => Object.keys(data).map(Number).filter(n => (data[n] || '').trim()).sort((a, b) => a - b);
+  function allText() {
+    const ks = keys();
+    const head = 'Comments on "' + document.title + '" (xlerobot-deck.html) — ' + ks.length + ' slide' + (ks.length === 1 ? '' : 's') + '\n';
+    return head + ks.map(n => '\n[Slide ' + pad(n) + '] ' + titleOf(n - 1) + '\n' + data[n].trim() + '\n').join('');
+  }
+  window.__cmText = allText;
+  function renderSummary() {
+    const box = document.getElementById('cm-summary'); if (!box) return;
+    const ks = keys();
+    box.innerHTML = ks.length ? '' : '<p class="cm-empty">No comments yet. Type in the box at the bottom of any slide — they are saved in this browser as you type.</p>';
+    ks.forEach(n => { const d = document.createElement('div'); d.className = 'cm-item'; const b = document.createElement('b'); b.textContent = 'Slide ' + pad(n) + ' · ' + titleOf(n - 1); const sp = document.createElement('span'); sp.textContent = data[n].trim(); d.append(b, sp); d.title = 'Go to slide ' + n; d.onclick = () => { location.hash = String(n); location.reload(); }; box.append(d); });
+    count.textContent = ks.length ? ks.length + ' commented' : '';
+  }
+  function load() { const i = cur(); label.textContent = 'Comment · slide ' + pad(i + 1) + ' / ' + pad(slides.length); ta.value = data[i + 1] || ''; panel.classList.toggle('has', !!ta.value.trim()); panel.style.display = (i === slides.length - 1) ? 'none' : ''; panel.classList.remove('open'); setPreview(); renderSummary(); }
+  function save() { const i = cur(); if (ta.value.trim()) data[i + 1] = ta.value; else delete data[i + 1]; try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {} panel.classList.toggle('has', !!ta.value.trim()); setPreview(); renderSummary(); }
+  async function copyAll(btn) {
+    const text = allText(); let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch (e) { const t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.append(t); t.select(); try { ok = document.execCommand('copy'); } catch (e2) {} t.remove(); }
+    const old = btn.textContent; btn.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(() => btn.textContent = old, 1600);
+  }
+  ta.addEventListener('input', save);
+  document.getElementById('cm-head').addEventListener('click', e => { if (e.target.id === 'cm-copy') return; panel.classList.add('open'); ta.focus(); });
+  ta.addEventListener('blur', () => setTimeout(() => { if (document.activeElement !== ta) panel.classList.remove('open'); }, 120));
+  ta.addEventListener('keydown', e => { e.stopPropagation(); if (e.key === 'Escape') ta.blur(); });
+  ['touchstart', 'touchend'].forEach(ev => panel.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+  document.getElementById('cm-copy').addEventListener('click', e => copyAll(e.currentTarget));
+  document.getElementById('cm-copy-big')?.addEventListener('click', e => copyAll(e.currentTarget));
+  const clr = document.getElementById('cm-clear'); let armed = false;
+  clr?.addEventListener('click', () => { if (!armed) { armed = true; clr.textContent = 'Click again to clear everything'; setTimeout(() => { armed = false; clr.textContent = 'Clear all'; }, 3000); return; } data = {}; try { localStorage.removeItem(KEY); } catch (e) {} armed = false; clr.textContent = 'Clear all'; load(); });
+  addEventListener('hashchange', load);
+  load();
+})();
+</script>
