@@ -37,7 +37,7 @@ for key,label in NAV:
  body=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{esc(p['lead'],quote=True)}"><meta name="theme-color" content="#172a34"><title>{esc(label)} · XLeRobot Farm</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head><body><a class="skip" href="#main">Skip to content</a><aside><a class="brand" href="index.html">XLeRobot / Farm<small>THE WORKING FIELD GUIDE</small></a><div class="search"><label for="site-search">Find a topic</label><input type="search" id="site-search" placeholder="Try: wick, cable, recovery" autocomplete="off"><div class="search-results" id="search-results" aria-live="polite"></div></div><nav aria-label="Main navigation">{nav}</nav><p class="side-note">Current decisions · Sep 22, 2026<br>NY grow test now.<br>Robot commissioning Sep 30.<br><br>Labels carry meaning; color is optional.</p></aside><main id="main"><header><p class="eyebrow">FIELD GUIDE / {esc(label.upper())}</p><h1>{p['title']}</h1><p class="lead">{p['lead']}</p></header>{p['body']}<footer>Consolidated September 22, 2026 · Plans are distinguished from verified results.<br><a href="index.html">Guide home</a> · <a href="research.html#decisions">Decision history &amp; sources</a> · <a href="https://github.com/RonTuretzky/xlerobot-farm">Project repository</a><p>Notebook data stays in your browser. This website has no connection to robot controls or checkout.</p></footer></main></body></html>'''
  (out/f'{key}.html').write_text(body)
  search.append({'title':label,'url':f'{key}.html','text':plain(p['title']+' '+p['lead']+' '+p['body'])})
- for match in re.finditer(r'<section id="([^"]+)">(.*?)(?=<section id=|$)',p['body'],re.S):
+ for match in re.finditer(r'<section id="([^"]+)"[^>]*>(.*?)(?=<section id=|$)',p['body'],re.S):
   title=re.search(r'<h2>(.*?)</h2>',match[2],re.S)
   if title:search.append({'title':plain(title[1]),'url':f'{key}.html#{match[1]}','text':plain(match[2])})
 # Old bookmarked URLs keep their fragment and open the combined guide.
@@ -45,6 +45,12 @@ for old,anchor in [('ny-trial','timing'),('planters','wick')]:
  alias=(out/'growing.html').read_text().replace('<head>','<head><link rel="canonical" href="https://ronturetzky.github.io/xlerobot-farm/growing.html"><script>location.replace("growing.html"+(location.hash||"#'+anchor+'"))</script>',1)
  (out/f'{old}.html').write_text(alias)
 (out/'data/search.json').write_text(json.dumps(search,indent=2))
+# Keep the previous standalone companion URL and its section links working.
+companion=(out/'software.html').read_text()
+companion=re.sub(r'(href|src)="(?!https?:|#|/)([^"]+)"',lambda m:f'{m[1]}="../{m[2]}"',companion)
+companion=companion.replace('<head>','<head><link rel="canonical" href="https://ronturetzky.github.io/xlerobot-farm/software.html">',1)
+(out/'downloads/software-roadmap-detail.html').write_text(companion)
+
 # Preserve existing public deep links, with an unavoidable historical label.
 for name in ['xlerobot-deck.html','sensor-shopping.html']:
  original=(HERE/name).read_text()
