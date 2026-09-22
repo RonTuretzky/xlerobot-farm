@@ -64,8 +64,8 @@
       "asin": "B0B1ZHXXXD",
       "usd": 8.99,
       "item": "Three relay modules",
-      "recommendation": "KEEP FOR CURRENT CIRCUIT",
-      "why": "Use one to switch probe power briefly; two are spares. No pump. Confirm the 5V module supply, 3.3V trigger and boot-off behavior before wiring; a simpler power switch can be evaluated later.",
+      "recommendation": "SUGGEST DEFER WITH PROBE",
+      "why": "Only proposed to switch moisture-probe power. With that probe deferred and no pump, the relay has no first-build role. Cart presence unchanged.",
       "in_latest_cart": true
     },
     {
@@ -96,8 +96,8 @@
       "asin": "B074TN6VXW",
       "usd": 14.45,
       "item": "SparkFun screw-terminal moisture probe",
-      "recommendation": "KEEP / PROTOTYPE",
-      "why": "One removable arm tool. Reports conductivity as a local wetness proxy, not water depth or calibrated soil water content. Test repeatable contact on thin paper/mat with a depth stop and compliance; leave a seed-free contact patch.",
+      "recommendation": "SUGGEST DEFER \u2014 PAPER TRAYS",
+      "why": "Optional conductivity/contact experiment, not required for paper-grown cress. Does not measure tray water level. Keep out of first build; use human checks of water reserve and paper wetness. Cart presence unchanged.",
       "in_latest_cart": true
     },
     {
