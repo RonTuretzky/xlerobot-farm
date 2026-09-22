@@ -4,3 +4,5 @@ __pycache__/
 dist/
 xlerobot-deck.html
 sensor-shopping.html
+
+*.blend1

@@ -9,7 +9,7 @@ sys.path.insert(0,str(HERE/'handbook'))
 from content import PAGES,page
 out=HERE/'dist'
 if out.exists():shutil.rmtree(out)
-shutil.copytree(HERE/'handbook',out,ignore=shutil.ignore_patterns('*.py','__pycache__'))
+shutil.copytree(HERE/'handbook',out,ignore=shutil.ignore_patterns('*.py','__pycache__','*.blend1'))
 (out/'.nojekyll').touch()
 esc=html.escape
 shop=json.loads((out/'data/shopping.json').read_text())
@@ -19,14 +19,14 @@ def table(items):return '<div class="scroll"><table><thead><tr><th>Item / Amazon
 page('shopping','Buy for the current build.','Item-by-item purpose, current cart presence and unresolved gaps. A cart is a dated shopping snapshot, not proof of delivery or a complete working robot.', '''
 <div class="callout"><strong>Latest readback: September 22, ~11:05 ET.</strong> Eleven farm items are active, totaling <strong>$126.94</strong> before checkout tax/shipping. One cress packet was added for the NY trial; no purchase was made. Personal items are excluded from this public inventory.</div>
 <h2>Start the trial without waiting for electronics</h2><p>The $4.99 garden-cress packet shows tomorrow morning delivery. Household paper replaces special grow mats for the first batch. The printed parts can be tested on a kitchen surface; the table, robot, probe and ESP32 are not prerequisites for germination. <a href="growing.html#timing">Timing and setup instructions →</a></p>
-<h2>In the active farm cart</h2>'''+table([i for i in shop['items'] if i['in_latest_cart']])+'''
+<figure class="blender-view"><a href="assets/blender/electronics-parts.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/blender/electronics-parts.png" alt="Blender view of the sensor electronics and assembly supplies"></a><figcaption>Representative hardware shapes. Use the item-by-item inventory below for exact products and purchase status. Open the image for a larger view.</figcaption></figure><h2>In the active farm cart</h2>'''+table([i for i in shop['items'] if i['in_latest_cart']])+'''
 <h2>Optional cuts still proposed</h2><p>The growing mats ($19.58, delivery Sep 30) and optional SHT31 air sensor ($9.99) could be deferred, saving <strong>$29.57</strong>. That would bring the current farm portion to <strong>$97.37</strong>. These removals have not been made by this update.</p>
 <h2>Previously reviewed, now absent from the active cart</h2><p>Absence does not mean “owned.” Reuse what you already have or arrange it locally. The functional USB data cable remains necessary for the ESP32 even though this separate listing is no longer active.</p>'''+table([i for i in shop['items'] if not i['in_latest_cart']])+'''
 <h2>Already reported / separately arranged</h2><ul><li><strong>Confirmed bought:</strong> RSHTECH RSH-ST07 powered hub and Anker C300 DC. Verify actual cable/adapter inventory when assembling.</li><li><strong>Selected robot package:</strong> WowRobo XLeRobot Combo; use the delivered motor adapters/cables/cameras and check against its packing list.</li><li><strong>Computer and robot cart:</strong> Mac and the planned IKEA cart; the printable planter table is separate.</li><li><strong>Local/reused supplies:</strong> paper, clean water, rinse container, kitchen measure, a suitable pouring bottle or fitted spout, solder/stripping tools, small fasteners/retainers/insulation and a borrowed meter.</li></ul>
 <h2>Do we need anything else?</h2><p>No new electronic category is needed to begin the NY grow trial. For the robot, resolve the missing data-cable availability, bottle outlet, probe depth stop/compliance, dry enclosure and cable retention. These are real build dependencies; their absence from the cart must not be mistaken for completion.</p><p>A grow light depends on measured/observed light at the actual site. Start with a bright location and watch for stretching; don’t buy an arbitrary lamp simply to fill a checklist. The mobile battery harness is still uncommissioned. Use supplied wall power first after label checks.</p><p>No pump, external tank, scale, overhead camera, leak pads, labels, rubber sheets, silicone mat or measuring syringes are being reintroduced. The current seed packet is for New York; Japan seed remains a local-sourcing task.</p>
 <p class="small">Prices/delivery can change. Check the actual checkout date before ordering; September 25+ seed arrival is a poor fit for this short pre-trip test. <a href="data/shopping.json">Download item data</a>.</p>
 ''')
-NAV=[('index','Start here'),('prints','Printing & table'),('hardware','Hardware & wiring'),('shopping','Shopping list'),('software','Software roadmap'),('japan','Japan & carry-on'),('research','Research & files'),('growing','Growing trial & kits')]
+NAV=[('index','Start here'),('visuals','Blender visual atlas'),('prints','Printing & table'),('hardware','Hardware & wiring'),('shopping','Shopping list'),('software','Software roadmap'),('japan','Japan & carry-on'),('research','Research & files'),('growing','Growing trial & kits')]
 class Plain(HTMLParser):
  def __init__(self):super().__init__();self.parts=[]
  def handle_data(self,d):self.parts.append(d)
