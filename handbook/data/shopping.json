@@ -1,0 +1,146 @@
+{
+  "verified_date": "2026-09-22",
+  "farm_subtotal_usd": 126.94,
+  "changes_this_review": "Added one seed packet only; other removed items were already absent on arrival.",
+  "checkout": false,
+  "items": [
+    {
+      "asin": "B0D1ZDLH5L",
+      "usd": 4.99,
+      "item": "Organo Republic curled garden cress, 5 g / 2,150 seeds",
+      "recommendation": "ADDED FOR NY TRIAL",
+      "why": "One packet, delivery displayed September 23, 7\u201311 AM; not purchased. Start small patches in both kits with household paper. Leave remaining seed in the US.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B088FF8PQ8",
+      "usd": 5.99,
+      "item": "Two manual mist bottles",
+      "recommendation": "OPTIONAL",
+      "why": "Hand-wet paper and seeds; reuse a household sprayer if available. Robot trigger actuation has not been demonstrated.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B000P9Z21I",
+      "usd": 7.0,
+      "item": "Nalgene 4 oz wide-mouth container",
+      "recommendation": "FIT ISSUE",
+      "why": "Carries water, but this is a wide-mouth container, not a controlled pouring spout. Measure grip and test a removable spout, or reuse a suitable household bottle before ordering a replacement.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B01ISAMUA6",
+      "usd": 14.59,
+      "item": "AstroAI AM33D multimeter",
+      "recommendation": "BORROW / JAPAN",
+      "why": "Useful for checking voltage, shorts and wire continuity during assembly; not installed on the robot. ANA does not explicitly clear this meter and pointed leads. Borrow or buy at the destination.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B00Y5TIJC8",
+      "usd": 19.58,
+      "item": "48 MicroMat 4 \u00d7 4 inch growing pads",
+      "recommendation": "SUGGEST SKIP",
+      "why": "Optional for the first crop: the cress creator uses household paper. These pads are smaller than the large tray and currently arrive September 30. Japanese entry treatment of this processed wood-fiber product was not individually confirmed.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B0DBLCHK48",
+      "usd": 9.99,
+      "item": "M2\u2013M5 screws, nuts and washers",
+      "recommendation": "KEEP IF NO STOCK",
+      "why": "Useful for sensor holders, not needed to join the selected snap-fit table. Exact holder bolts still depend on measured fit. Carry only useful fasteners; source bundled hex-key tools in Japan unless ANA confirms.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B01M0O1NXM",
+      "usd": 13.48,
+      "item": "22 AWG flexible silicone wire",
+      "recommendation": "KEEP",
+      "why": "Additional sensor harness for arm movement. Supplied robot motor cables are not spare sensor leads. Route with joint slack and test I\u00b2C reliability over the actual light-sensor cable.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B0B1ZHXXXD",
+      "usd": 8.99,
+      "item": "Three relay modules",
+      "recommendation": "KEEP FOR CURRENT CIRCUIT",
+      "why": "Use one to switch probe power briefly; two are spares. No pump. Confirm the 5V module supply, 3.3V trigger and boot-off behavior before wiring; a simpler power switch can be evaluated later.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B0CKZ7GFSK",
+      "usd": 13.99,
+      "item": "Perfboards, headers and screw terminals",
+      "recommendation": "KEEP",
+      "why": "Secure sensor connections after breadboard tests. Loose headers/terminals need soldering to boards; screw terminals accept the finished wire ends.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B081HH5X61",
+      "usd": 4.15,
+      "item": "Reusable cable straps",
+      "recommendation": "KEEP",
+      "why": "Retain cables with slack through moving joints; provide strain relief without blocking a camera or pulling on a sensor.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B072PCQ2LW",
+      "usd": 6.99,
+      "item": "Heat-shrink sleeves",
+      "recommendation": "CONDITIONAL",
+      "why": "Insulate exposed soldered wire splices. Not necessary over enclosed screw terminals. Use local heat tools; no new heat gun is required in this cart.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B074TN6VXW",
+      "usd": 14.45,
+      "item": "SparkFun screw-terminal moisture probe",
+      "recommendation": "KEEP / PROTOTYPE",
+      "why": "One removable arm tool. Reports conductivity as a local wetness proxy, not water depth or calibrated soil water content. Test repeatable contact on thin paper/mat with a depth stop and compliance; leave a seed-free contact patch.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B00M0F29OS",
+      "usd": 7.49,
+      "item": "Three BH1750 light modules",
+      "recommendation": "KEEP",
+      "why": "Use ONE movable upward-facing paddle; two spares. Measure at plant height with the arm out of the light path. Lux is not PAR/PPFD.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B0F9WVY98D",
+      "usd": 9.99,
+      "item": "Two SHT31 air sensors",
+      "recommendation": "SUGGEST DEFER",
+      "why": "Optional temperature/humidity context. If retained, mount one on the robot body or near the table, not on the arm.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B09VKYLYN7",
+      "usd": 9.99,
+      "item": "Breadboard and jumper wires",
+      "recommendation": "KEEP",
+      "why": "Temporary dry bench wiring before soldering; not a durable exposed arm harness.",
+      "in_latest_cart": true
+    },
+    {
+      "asin": "B08NXJKNNL",
+      "usd": 5.99,
+      "item": "USB-A to USB-C data cable",
+      "recommendation": "KEEP",
+      "why": "Connects the ESP32 to the owned powered USB hub. The hub connects to the Mac.",
+      "in_latest_cart": false
+    },
+    {
+      "asin": "B0D8T53CQ5",
+      "usd": 16.99,
+      "item": "Three ELEGOO ESP32 boards",
+      "recommendation": "KEEP",
+      "why": "Use one USB sensor controller; two spares. Supplies sensor readings to the Mac independently of robot motor controllers. Verify delivered board pinout and safe supply voltages.",
+      "in_latest_cart": true
+    }
+  ],
+  "verified_context": "After authorized seed addition, approximately 11:05 ET",
+  "active_farm_lines": 11
+}

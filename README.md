@@ -1,46 +1,26 @@
-# XLeRobot autonomous farm
+# XLeRobot Farm — working field guide
 
-A 28-slide roadmap for a small autonomous farm, with an itemized sensor shopping checklist and Amazon links.
+[Open the website](https://ronturetzky.github.io/xlerobot-farm/) · [Start the NY growing trial](https://ronturetzky.github.io/xlerobot-farm/ny-trial.html)
 
-- [Open the deck](https://ronturetzky.github.io/xlerobot-farm/)
-- [Open the sensor checklist](https://ronturetzky.github.io/xlerobot-farm/sensor-shopping.html)
+Nine connected guides consolidate current hardware, planter operation, print status, shopping, wiring, the software roadmap, travel and research. September 22 decisions supersede the archived original deck and sensor checklist. The home page is now the guide; old deck URLs remain accessible with historical banners.
 
-The roadmap uses September 19–29 for software preparation and starts physical work September 30. It assumes a likely Bambu A1, and uses labels, symbols and patterns alongside color.
+The six-day NY trial covers fresh garden cress on household paper, leak/wick checks, daily observation and a local-only exportable notebook. It does not promise a harvest or autonomous care. Robot commissioning remains September 30. The current Blender file uses actual planter meshes but a clearly marked proxy for the selected table; original editable table files are still pending.
 
 ## Build and preview
 
-Python 3 is the only build dependency:
-
 ```sh
 python3 build_site.py
-python3 -m http.server 8000 --directory dist
+python3 -m http.server 8785 --bind 127.0.0.1 --directory dist
 ```
 
-Open http://localhost:8000/. Use arrow keys to navigate. Slide 7 links to the full measurement-parts checklist.
+Edit `handbook/content.py` for guide content, `handbook/data/shopping.json` for the dated farm-only inventory, and `handbook/style.css` / `handbook/app.js` for navigation, search and local notebook. No runtime frameworks or external fonts/scripts. Local notebook data is not uploaded; export JSON before switching browsers. It is not a robot controller.
 
-Edit `build_xlerobot_deck.py` for slides, `sensor-bom.json` for parts/prices/links, and `build_sensor_shopping.py` for the checklist. Shared layout and interactions are in the HTML includes and `shared_templates.py`.
+Run `python3 check_site.py` for static links, fragments, required files and privacy checks. Browser checks cover search, notebook persistence/export, navigation and mobile layout.
 
-## Publishing
+## Publish
 
-`main` contains source; `gh-pages` contains only built files. GitHub Pages publishes from the root of `gh-pages` in branch mode. To update an existing clone:
+Reuse this repository: `main` holds source, `gh-pages` holds built static files. GitHub Pages deploys the root of `gh-pages`; `.nojekyll` is included. Commit source and copy `dist` to a dedicated branch worktree, then push and verify the Pages build plus cache-busted live pages. Signing follows Git configuration. No custom domain is configured.
 
-```sh
-python3 build_site.py
-git fetch origin gh-pages
-git worktree add ../xlerobot-farm-pages gh-pages
-rsync -a --delete --exclude=.git dist/ ../xlerobot-farm-pages/
-git -C ../xlerobot-farm-pages add -A
-git -C ../xlerobot-farm-pages commit -m "Update farm site"
-git -C ../xlerobot-farm-pages push origin gh-pages
-git worktree remove ../xlerobot-farm-pages
-```
+## Sources and licenses
 
-Commit source changes on `main` as well. Commit signing follows your Git configuration.
-
-## Data and comments
-
-Prices are a September 20, 2026 research snapshot in USD, before tax/shipping; check listings before ordering. The checklist distinguishes core and optional hardware. No purchases are performed by this site.
-
-Slide comments are saved only in the current browser's local storage. They are not shared or uploaded. Use the copy/export controls to share feedback; comments on a localhost copy do not automatically transfer to the public site.
-
-Image attribution is in [assets/CREDITS.md](assets/CREDITS.md). This repository contains the deck and its checklist; private attachments and unrelated research are excluded.
+Public technical summaries are curated; raw private transcripts, delivery addresses and personal cart items are excluded. Prices/delivery are explicitly dated snapshots, not order confirmations. Creators and model licenses are recorded in `handbook/downloads/MODEL-CREDITS.md`. Source planter STLs are unchanged; modified assembly/render arrangements retain CC BY-SA 4.0 attribution. All print files require inspection and physical validation.
