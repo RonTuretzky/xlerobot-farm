@@ -1,0 +1,14 @@
+(()=>{'use strict';
+const deck=document.querySelector('#roadmap');if(!deck)return;
+const slides=[...deck.querySelectorAll('[data-slide]')],jump=document.querySelector('#slide-jump'),prev=document.querySelector('#slide-prev'),next=document.querySelector('#slide-next'),pos=document.querySelector('#slide-position'),read=document.querySelector('#read-all'),present=document.querySelector('#present');
+const aliases={build:'cycle',dates:'schedule',spill:'gates',example:'review',priority:'observation'};
+let current=0,all=false;
+function indexFromHash(){let id=decodeURIComponent(location.hash.slice(1));id=aliases[id]||id;const i=slides.findIndex(s=>s.id===id);return i<0?0:i}
+function display(i,{focus=false,updateHash=false}={}){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>{s.hidden=!all&&n!==current;if(all)s.querySelector('img').loading='eager'});[current,current+1].filter(n=>n<slides.length).forEach(n=>{slides[n].querySelector('img').loading='eager'});jump.value=slides[current].id;prev.disabled=current===0;next.disabled=current===slides.length-1;pos.textContent=`${current+1} / ${slides.length} · ${slides[current].querySelector('h2').textContent}`;if(updateHash)history.pushState(null,'','#'+slides[current].id);if(focus){slides[current].querySelector('h2').focus({preventScroll:true});if(all)slides[current].scrollIntoView({block:'start'});else window.scrollTo({top:0,behavior:'instant'})}}
+prev.addEventListener('click',()=>display(current-1,{focus:true,updateHash:true}));next.addEventListener('click',()=>display(current+1,{focus:true,updateHash:true}));jump.addEventListener('change',()=>display(slides.findIndex(s=>s.id===jump.value),{focus:true,updateHash:true}));
+read.addEventListener('click',()=>{all=!all;deck.classList.toggle('all-slides',all);read.setAttribute('aria-pressed',String(all));read.textContent=all?'Slide view':'Read all';display(current)});
+present.addEventListener('click',()=>{const on=document.body.classList.toggle('roadmap-present');present.setAttribute('aria-pressed',String(on));present.textContent=on?'Exit present':'Present'});
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||e.target.closest('input,select,textarea,button,summary,a,[contenteditable]'))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();display(current+(e.key==='ArrowRight'?1:-1),{focus:true,updateHash:true})}if(e.key==='Escape'){document.body.classList.remove('roadmap-present');present.setAttribute('aria-pressed','false');present.textContent='Present'}});
+window.addEventListener('hashchange',()=>display(indexFromHash()));
+const noteState=new Map();window.addEventListener('beforeprint',()=>{deck.querySelectorAll('img').forEach(i=>i.loading='eager');deck.querySelectorAll('details').forEach(d=>{noteState.set(d,d.open);d.open=true})});window.addEventListener('afterprint',()=>{noteState.forEach((v,d)=>d.open=v);noteState.clear()});display(indexFromHash());
+})();
